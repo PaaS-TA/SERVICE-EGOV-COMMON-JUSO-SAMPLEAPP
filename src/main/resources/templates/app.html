@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ko" ng-app="sampleApp" >
+<!--  th 를 등록하여 아래 th:inline 을 사용할 수 있음. -->
+
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+    <title>개방형 클라우드 플랫폼 (API 플랫폼 Sample Application)</title>
+
+    <script src="lib/jquery-1.11.0.js"></script>
+
+	<!-- Bootstrap CSS파일 -->
+    <link href="css/bootstrap.css" rel="stylesheet"/>
+	<!-- 폰트 -->
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet"/>
+
+    <!-- SB Admin CSS - 모든 페이지를 포함함 -->
+    <link href="css/sb-admin.css" rel="stylesheet"/>
+
+	<!-- MVC패턴으로 서버에서 정보를 받아오기 위함 -->
+	<script th:inline="javascript">
+	/*<![CDATA[*/    
+	
+	    // 현재 App이 올라가 있는 서버 URL
+    	var serverUrl = /*[[${server_uri}]]*/ '';  
+        
+		// 도로명 주소 Open API 사용을 위한 정보 
+		var apiUrl = /*[[${api_uri}]]*/ '';
+        var api_username = /*[[${api_username}]]*/ '';
+        var api_password = /*[[${api_password}]]*/;
+        var api_consumerKey = /*[[${api_consumerKey}]]*/;
+        var api_consumerSecret = /*[[${api_consumerSecret}]]*/;
+        
+        // 도로명 주소 검색 서비스 (자체DB) 를 사용하기 위한 정보
+        var apiDBUrl =  /*[[${db_uri}]]*/ '';
+        var db_username = /*[[${db_username}]]*/ '';
+        var db_password = /*[[${db_password}]]*/;
+        var db_consumerKey = /*[[${db_consumerKey}]]*/;
+        var db_consumerSecret = /*[[${db_consumerSecret}]]*/;
+        
+        // 도로명 주소 관리 서비스 (자체DB) 를 사용하기 위한 정보
+        var apiDBMgtUrl =  /*[[${mgt_uri}]]*/ '';
+        var mgt_username = /*[[${mgt_username}]]*/ '';
+        var mgt_password = /*[[${mgt_password}]]*/;
+        var mgt_consumerKey = /*[[${mgt_consumerKey}]]*/;
+        var mgt_consumerSecret = /*[[${mgt_consumerSecret}]]*/;
+        
+// DEBUG CODE
+//        alert('DATA api>\n' + serverUrl + ';\n' + apiUrl + ';\n' + api_username + ';\n' + api_password + ';\n' + api_consumerKey + ';\n' + api_consumerSecret + ';\n');
+//        alert('DATA db>\n' + serverUrl + ';\n' + apiDBUrl + ';\n' + db_username + ';\n' + db_password + ';\n' + db_consumerKey + ';\n' + db_consumerSecret + ';\n');
+//        alert('DATA dbmgt>\n' + serverUrl + ';\n' + apiDBMgtUrl + ';\n' + mgt_username + ';\n' + mgt_password + ';\n' + mgt_consumerKey + ';\n' + mgt_consumerSecret + ';\n');
+        
+	/*]]>*/
+	</script>
+	
+</head>
+
+<body >
+
+     <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/main">WSO2 API Manager Sample</a>
+            </div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-top-links navbar-right" >
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+            <!-- /.navbar-top-links -->
+
+        </nav>
+        <!-- /.navbar-static-top -->
+
+        <nav class="navbar-default navbar-static-side" role="navigation" >
+            <div class="sidebar-collapse" >
+                <ul class="nav" id="side-menu">
+                    <li>
+                        <a href="#/dorojuso"><i class=""></i> 도로명 주소 검색(Open API)</a>
+                     </li>
+                    <li>
+                        <a href="#/dorojusoDB"><i class=""></i> 도로명 주소 검색(자체 DB)</a>
+                     </li>
+                    <li>
+                        <a href="#/dorojusoDBMgt"><i class=""></i> 도로명 주소 관리(자체 DB)</a>
+                     </li>
+                </ul>
+                <!-- /#side-menu -->
+            </div>
+            <!-- /.sidebar-collapse -->
+        </nav>
+        <!-- /.navbar-static-side -->
+
+        <!-- Page  View-->
+        <div ng-view="" class="view-frame"></div>
+
+    </div>
+    <!-- /#wrapper -->
+
+    <div ng-include="" src="'./partials/waitForm.html'"></div>
+
+    <!-- Core Scripts  -->
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- SB Admin Scripts  -->
+    <script src="lib/sb-admin.js"></script>
+
+	<!-- AngularJS -->
+    <script src="lib/angular-1.2.18.js"></script>
+    <script src="lib/angular-animate-1.2.18.js"></script>
+    <script src="lib/angular-resource-1.2.18.js"></script>
+    <script src="lib/angular-route-1.2.18.js"></script>
+    <script src="lib/angular-sanitize-1.2.18.js"></script>
+
+    <!-- xml2json XML 데이터 검증을 위함 -->
+    <script src="lib/xml2json.js"></script>
+
+	<!--  공통 사용 Function 모음 -->
+    <script src="js/common/common.js"></script>
+    
+    <!-- AngularJS 시작 파일 -->
+    <script src="js/app.js"></script>
+    <!-- 기본 Controller 파일 -->
+    <script src="js/controllers.js"></script>
+    <!-- Main Controller파일 (기능 없음) -->
+    <script src="js/controller/mainControllers.js"></script>
+    <!-- 도로명 주소 Open API Controller -->
+    <script src="js/controller/doroJusoControllers.js"></script>
+    <!-- 도로명 주소 검색 서비스 Controller -->
+    <script src="js/controller/doroJusoDBControllers.js"></script>
+    <!-- 도로명 주소 관리 Controller -->
+    <script src="js/controller/doroJusoDBMgtControllers.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+---
+applications:
+- name: service_egov_common_juso_sampleApp
+  memory: 512M
+  instances: 1 
+  path: build/libs/service_egov_common_juso_sampleApp.jar

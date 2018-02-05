@@ -1,0 +1,190 @@
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h3 class="page-header">도로명 주소 정보</h3>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+    <form role="form">
+       <div class="col-lg-12">
+           <button ng-click="save()" class="btn btn-primary">저장</button>
+           <button ng-click="reset" class="btn btn-primary btnInit" id="resetButton">초기화</button>
+           <button ng-click="list()" class="btn btn-primary">목록</button>
+           <button ng-click="delete()" class="btn btn-primary" id="deleteButton">삭제</button>
+           <p></p>
+       </div>
+       <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    도로명 주소 정보
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+	                        <div class="form-group">
+	                           <label>법정동코드</label>
+	                           <input class="form-control" ng-model="address.code">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>시도명</label>
+	                           <input class="form-control" ng-model="address.sido">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>시군구명</label>
+	                           <input class="form-control" ng-model="address.sigungu">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>법정읍면동명</label>
+	                           <input class="form-control" ng-model="address.eupmyundong">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>법정리명</label>
+	                           <input class="form-control" ng-model="address.ri">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>산여부</label> <!-- 0:대지, 1:산 -->
+	                           <select class="form-control" ng-model="address.san">
+	                           <option value="0">대지</option>
+	                           <option value="1">산</option>
+	                           </select> 
+	                        </div>
+	                        <div class="form-group">
+	                           <label>지번본번(번지)</label>
+	                           <input class="form-control" ng-model="address.bunji">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>지번부번(호)</label>
+	                           <input class="form-control" ng-model="address.ho">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>도로명코드</label> <!-- 시군구코드(5)+도로명번호(7) -->
+	                           <input class="form-control" ng-model="address.doro_code">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>도로명</label>
+	                           <input class="form-control" ng-model="address.doro">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>지하여부</label> <!-- 0:지상, 1:지하, 2:공중 -->
+	                           <select class="form-control" ng-model="address.jiha">
+	                           <option value="0">지상</option> 
+	                           <option value="1">지하</option>
+	                           <option value="2">공중</option>
+	                           </select>
+	                        </div>
+	                        <div class="form-group">
+	                           <label>건물본번</label>
+	                           <input class="form-control" ng-model="address.bon">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>건물부번</label>
+	                           <input class="form-control" ng-model="address.bu">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>건축물대장 건물명</label>
+	                           <input class="form-control" ng-model="address.gunmul">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>상세건물명</label>
+	                           <input class="form-control" ng-model="address.gunmul_sangse">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>건물관리번호</label>
+	                           <input class="form-control" ng-model="address.gunmul_no"  id="gunmul_no">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>읍면동일련번호</label>
+	                           <input class="form-control" ng-model="address.eupmyundong_no">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>행정동코드</label>
+	                           <input class="form-control" ng-model="address.hang_code">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>행정동명</label>
+	                           <input class="form-control" ng-model="address.hang">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>우편번호</label>
+	                           <input class="form-control" ng-model="address.zipcode">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>우편일련번호</label>
+	                           <input class="form-control" ng-model="address.zipno">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>다량배달처명</label>
+	                           <input class="form-control" ng-model="address.dayaeng">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>이동사유코드</label> <!-- 31 : 건물번호 부여, 34, 변경, 63 : 건물번호 폐지, 72 : 건물군내 일부 건물 폐지, 73 : 건물군내 일부 건물 생성  -->
+	                           <select class="form-control" ng-model="address.idong">
+	                           <option value="">----</option>
+	                           <option value="31">건물번호 부여</option>
+	                           <option value="34">변경</option>
+	                           <option value="63">건물번호 폐지</option>
+	                           <option value="72">건물군내 일부 건물 폐지</option>
+	                           <option value="73">건물군내 일부 건물 생성</option>
+	                           </select>
+	                        </div>
+	                        <div class="form-group">
+	                           <label>변경일자</label>
+	                           <input class="form-control" ng-model="address.update_date">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>변경전도로명주소</label>
+	                           <input class="form-control" ng-model="address.defore_doro">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>시군구용 건물명</label>
+	                           <input class="form-control" ng-model="address.sigungu_gunmul">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>공동주택여부</label>  <!-- 0:비공동주택, 1:공동주택 -->
+	                           <select class="form-control" ng-model="address.gongdong">
+	                           <option value="0">비공동주택</option>
+	                           <option value="1">공동주택</option>
+	                           </select>
+	                        </div>
+	                        <div class="form-group">
+	                           <label>기초구역번호</label>
+	                           <input class="form-control" ng-model="address.gicho_no">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>상세주소여부</label>  <!-- 0:미부여, 1:부여 -->
+	                           <select class="form-control" ng-model="address.juso_sang">
+	                           <option value="0">미부여</option>
+	                           <option value="1">부여</option>
+	                           </select>
+	                        </div>
+	                        <div class="form-group">
+	                           <label>비고1</label>
+	                           <input class="form-control" ng-model="address.bigo1">
+	                        </div>
+	                        <div class="form-group">
+	                           <label>비고2</label>
+	                           <input class="form-control" ng-model="address.bigo2">
+	                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+       <div class="col-lg-12">
+           <button ng-click="save()" class="btn btn-primary">저장</button>
+           <button ng-click="reset" class="btn btn-primary btnInit" id="resetButton">초기화</button>
+           <button ng-click="list()" class="btn btn-primary">목록</button>
+           <button ng-click="delete()" class="btn btn-primary" id="deleteButton">삭제</button>
+           <p></p>
+       </div>
+     </form>     
+
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
+
